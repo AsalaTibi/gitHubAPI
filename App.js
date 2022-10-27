@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import type {Node} from 'react';
-import UsersList from './UsersList';
+import UsersList from './src/UsersList';
 class App extends Component {
   render() {
     return <UsersList />;
