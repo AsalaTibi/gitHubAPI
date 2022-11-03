@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React, {Component} from 'react';
-import {View, Text, Button,FlatList} from 'react-native';
+import {View, Text, Button,FlatList, TouchableOpacity} from 'react-native';
 import UserCard from './UserCard';
 export default class UsersList extends Component {
   
@@ -15,7 +16,9 @@ export default class UsersList extends Component {
       .then(response => response.json())
       .then(data => this.setState({ users: data }))
       }
-  
+  goToDetails(item){
+    this.props.navigation.navigate('Details',{user:item})
+  }
   render() {
     let users = []
     users = this.state.users;
@@ -23,11 +26,13 @@ export default class UsersList extends Component {
       <FlatList
       data={users}
       renderItem={({item})=>{
-        return(
-          <UserCard user={item}/>
-        )
+         return(
+          <TouchableOpacity onPress={() => this.goToDetails(item)}>
+            <UserCard user={item}/>
+          </TouchableOpacity>
+         )
       }}
-      />       
+      /> 
     )
   }
 }
