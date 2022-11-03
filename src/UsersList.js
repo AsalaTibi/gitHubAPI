@@ -27,9 +27,9 @@ export default class UsersList extends Component {
       data={users}
       renderItem={({item})=>{
          return(
-          <TouchableOpacity onPress={() => this.goToDetails(item)}>
-            <UserCard user={item}/>
-          </TouchableOpacity>
+            <UserCard 
+              user={item} handlePress={this.goToDetails.bind(this)}
+             />
          )
       }}
       /> 
